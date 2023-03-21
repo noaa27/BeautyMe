@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7f59599afd84c439f98aadc74e811a3" Name="Diagram1">
+        <EntityTypeShape EntityType="BeautyMeModel.Appointment" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Business" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Business_can_give_treatment" Width="1.5" PointX="9.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Category" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Client" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Future_Appointment" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Professional" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Review_Business" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Treatment_for_appointment" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BeautyMeModel.Type_Treatment" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="BeautyMeModel.FK__Appointme__Numbe__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Futur__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Treatment__Numbe__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business___Busin__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business__Busine__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business__Profes__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Busin__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business___Categ__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business___Type___3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Futur__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Clien__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Futur__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Profe__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.FK__Treatment__Type___440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.Appointment_can_give_treatment" ManuallyRouted="false" />
+        <AssociationConnector Association="BeautyMeModel.Treatment_of_category" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
