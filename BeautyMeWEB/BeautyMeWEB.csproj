@@ -162,10 +162,20 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BusinessController.cs" />
+    <Compile Include="Controllers\Business_can_give_treatmentController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfessionalController.cs" />
+    <Compile Include="Controllers\Type_TreatmentController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DTO\BusinessDTO.cs" />
+    <Compile Include="DTO\Business_can_give_treatmentDTO.cs" />
+    <Compile Include="DTO\CategoryDTO.cs" />
+    <Compile Include="DTO\ProfessionalDTO.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
+    <Compile Include="DTO\Type_TreatmentDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,6 +235,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Business\" />
+    <Folder Include="Views\Business_can_give_treatment\" />
+    <Folder Include="Views\Category\" />
+    <Folder Include="Views\Professional\" />
+    <Folder Include="Views\Type_Treatment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

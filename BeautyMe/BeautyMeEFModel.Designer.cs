@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\ofirt\OneDrive\Desktop\Beauty_Me\BeautyMe\BeautyMe\BeautyMeEFModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Asus\Documents\BeautyMe\BeautyMe\BeautyMeEFModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

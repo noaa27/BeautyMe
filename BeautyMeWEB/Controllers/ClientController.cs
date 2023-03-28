@@ -19,11 +19,11 @@ namespace BeautyMeWEB.Controllers
             BeautyMeDBContext db = new BeautyMeDBContext();
             List<ClientDTO> c = db.Client.Select(x => new ClientDTO
             {
-                Email = x.Email,
                 ID_number = x.ID_number,
                 First_name = x.First_name,
                 Last_name = x.Last_name,
                 phone = x.phone,
+                Email = x.Email,
                 password = x.password
             }).ToList();
             if (c != null)

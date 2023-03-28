@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BeautyMeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Number_appointment" />
+    </Key>
+    <Property Name="Number_appointment" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Start_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="End_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Is_client_house" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Business" Relationship="Self.FK__Appointme__Numbe__38996AB5" FromRole="Appointment" ToRole="Business" />
+    <NavigationProperty Name="Future_Appointment" Relationship="Self.FK__Future_Ap__Futur__4F7CD00D" FromRole="Appointment" ToRole="Future_Appointment" />
+    <NavigationProperty Name="Treatment_for_appointment" Relationship="Self.FK__Treatment__Numbe__4316F928" FromRole="Appointment" ToRole="Treatment_for_appointment" />
+    <NavigationProperty Name="Type_Treatment" Relationship="Self.Appointment_can_give_treatment" FromRole="Appointment" ToRole="Type_Treatment" />
+  </EntityType>
+  <EntityType Name="Business">
+    <Key>
+      <PropertyRef Name="Business_Number" />
+    </Key>
+    <Property Name="Business_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Is_client_house" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Professional_ID_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK__Appointme__Numbe__38996AB5" FromRole="Business" ToRole="Appointment" />
+    <NavigationProperty Name="Business_can_give_treatment" Relationship="Self.FK__Business___Busin__3D5E1FD2" FromRole="Business" ToRole="Business_can_give_treatment" />
+    <NavigationProperty Name="Professional" Relationship="Self.FK__Business__Busine__3B75D760" FromRole="Business" ToRole="Professional" />
+    <NavigationProperty Name="Professional1" Relationship="Self.FK__Business__Profes__3C69FB99" FromRole="Business" ToRole="Professional" />
+    <NavigationProperty Name="Review_Business" Relationship="Self.FK__Review_Bu__Busin__403A8C7D" FromRole="Business" ToRole="Review_Business" />
+  </EntityType>
+  <EntityType Name="Business_can_give_treatment">
+    <Key>
+      <PropertyRef Name="Type_treatment_Number" />
+      <PropertyRef Name="Category_Number" />
+      <PropertyRef Name="Business_Number" />
+    </Key>
+    <Property Name="Type_treatment_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Category_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Business_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Treatment_duration" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Business" Relationship="Self.FK__Business___Busin__3D5E1FD2" FromRole="Business_can_give_treatment" ToRole="Business" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Business___Categ__3E52440B" FromRole="Business_can_give_treatment" ToRole="Category" />
+    <NavigationProperty Name="Type_Treatment" Relationship="Self.FK__Business___Type___3F466844" FromRole="Business_can_give_treatment" ToRole="Type_Treatment" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Category_Number" />
+    </Key>
+    <Property Name="Category_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Business_can_give_treatment" Relationship="Self.FK__Business___Categ__3E52440B" FromRole="Category" ToRole="Business_can_give_treatment" />
+    <NavigationProperty Name="Type_Treatment" Relationship="Self.Treatment_of_category" FromRole="Category" ToRole="Type_Treatment" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID_number" />
+    </Key>
+    <Property Name="ID_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="birth_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressStreet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressHouseNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="AddressCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Future_Appointment" Relationship="Self.FK__Future_Ap__Futur__4D94879B" FromRole="Client" ToRole="Future_Appointment" />
+    <NavigationProperty Name="Review_Business" Relationship="Self.FK__Review_Bu__Clien__412EB0B6" FromRole="Client" ToRole="Review_Business" />
+  </EntityType>
+  <EntityType Name="Future_Appointment">
+    <Key>
+      <PropertyRef Name="Future_appointment_number" />
+    </Key>
+    <Property Name="Future_appointment_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK__Future_Ap__Futur__4F7CD00D" FromRole="Future_Appointment" ToRole="Appointment" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Future_Ap__Futur__4D94879B" FromRole="Future_Appointment" ToRole="Client" />
+    <NavigationProperty Name="Type_Treatment" Relationship="Self.FK__Future_Ap__Futur__4E88ABD4" FromRole="Future_Appointment" ToRole="Type_Treatment" />
+  </EntityType>
+  <EntityType Name="Professional">
+    <Key>
+      <PropertyRef Name="ID_number" />
+    </Key>
+    <Property Name="ID_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="birth_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressStreet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressHouseNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="AddressCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Business" Relationship="Self.FK__Business__Busine__3B75D760" FromRole="Professional" ToRole="Business" />
+    <NavigationProperty Name="Business1" Relationship="Self.FK__Business__Profes__3C69FB99" FromRole="Professional" ToRole="Business" />
+    <NavigationProperty Name="Review_Business" Relationship="Self.FK__Review_Bu__Profe__4222D4EF" FromRole="Professional" ToRole="Review_Business" />
+  </EntityType>
+  <EntityType Name="Review_Business">
+    <Key>
+      <PropertyRef Name="Review_Number" />
+    </Key>
+    <Property Name="Review_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Cleanliness" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Professionalism" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="On_time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Overall_rating" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Professional_ID_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Client_ID_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Business_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Business" Relationship="Self.FK__Review_Bu__Busin__403A8C7D" FromRole="Review_Business" ToRole="Business" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Review_Bu__Clien__412EB0B6" FromRole="Review_Business" ToRole="Client" />
+    <NavigationProperty Name="Professional" Relationship="Self.FK__Review_Bu__Profe__4222D4EF" FromRole="Review_Business" ToRole="Professional" />
+  </EntityType>
+  <EntityType Name="Treatment_for_appointment">
+    <Key>
+      <PropertyRef Name="Type_treatment_Number" />
+    </Key>
+    <Property Name="Type_treatment_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Number_appointment" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK__Treatment__Numbe__4316F928" FromRole="Treatment_for_appointment" ToRole="Appointment" />
+    <NavigationProperty Name="Type_Treatment" Relationship="Self.FK__Treatment__Type___440B1D61" FromRole="Treatment_for_appointment" ToRole="Type_Treatment" />
+  </EntityType>
+  <EntityType Name="Type_Treatment">
+    <Key>
+      <PropertyRef Name="Type_treatment_Number" />
+    </Key>
+    <Property Name="Type_treatment_Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Business_can_give_treatment" Relationship="Self.FK__Business___Type___3F466844" FromRole="Type_Treatment" ToRole="Business_can_give_treatment" />
+    <NavigationProperty Name="Future_Appointment" Relationship="Self.FK__Future_Ap__Futur__4E88ABD4" FromRole="Type_Treatment" ToRole="Future_Appointment" />
+    <NavigationProperty Name="Treatment_for_appointment" Relationship="Self.FK__Treatment__Type___440B1D61" FromRole="Type_Treatment" ToRole="Treatment_for_appointment" />
+    <NavigationProperty Name="Appointment" Relationship="Self.Appointment_can_give_treatment" FromRole="Type_Treatment" ToRole="Appointment" />
+    <NavigationProperty Name="Category" Relationship="Self.Treatment_of_category" FromRole="Type_Treatment" ToRole="Category" />
+  </EntityType>
+  <Association Name="FK__Appointme__Numbe__38996AB5">
+    <End Role="Business" Type="Self.Business" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="Business_Number" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Number_appointment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Future_Ap__Futur__4F7CD00D">
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Future_Appointment" Type="Self.Future_Appointment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="Number_appointment" />
+      </Principal>
+      <Dependent Role="Future_Appointment">
+        <PropertyRef Name="Future_appointment_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Treatment__Numbe__4316F928">
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="0..1" />
+    <End Role="Treatment_for_appointment" Type="Self.Treatment_for_appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="Number_appointment" />
+      </Principal>
+      <Dependent Role="Treatment_for_appointment">
+        <PropertyRef Name="Number_appointment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Business___Busin__3D5E1FD2">
+    <End Role="Business" Type="Self.Business" Multiplicity="1" />
+    <End Role="Business_can_give_treatment" Type="Self.Business_can_give_treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="Business_Number" />
+      </Principal>
+      <Dependent Role="Business_can_give_treatment">
+        <PropertyRef Name="Business_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Business__Busine__3B75D760">
+    <End Role="Professional" Type="Self.Professional" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Professional">
+        <PropertyRef Name="ID_number" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="Business_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Business__Profes__3C69FB99">
+    <End Role="Professional" Type="Self.Professional" Multiplicity="0..1" />
+    <End Role="Business" Type="Self.Business" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professional">
+        <PropertyRef Name="ID_number" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="Professional_ID_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review_Bu__Busin__403A8C7D">
+    <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
+    <End Role="Review_Business" Type="Self.Review_Business" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="Business_Number" />
+      </Principal>
+      <Dependent Role="Review_Business">
+        <PropertyRef Name="Business_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Business___Categ__3E52440B">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Business_can_give_treatment" Type="Self.Business_can_give_treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Category_Number" />
+      </Principal>
+      <Dependent Role="Business_can_give_treatment">
+        <PropertyRef Name="Category_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Business___Type___3F466844">
+    <End Role="Type_Treatment" Type="Self.Type_Treatment" Multiplicity="1" />
+    <End Role="Business_can_give_treatment" Type="Self.Business_can_give_treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Treatment">
+        <PropertyRef Name="Type_treatment_Number" />
+      </Principal>
+      <Dependent Role="Business_can_give_treatment">
+        <PropertyRef Name="Type_treatment_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Future_Ap__Futur__4D94879B">
+    <End Role="Client" Type="Self.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Future_Appointment" Type="Self.Future_Appointment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID_number" />
+      </Principal>
+      <Dependent Role="Future_Appointment">
+        <PropertyRef Name="Future_appointment_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review_Bu__Clien__412EB0B6">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Review_Business" Type="Self.Review_Business" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID_number" />
+      </Principal>
+      <Dependent Role="Review_Business">
+        <PropertyRef Name="Client_ID_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Future_Ap__Futur__4E88ABD4">
+    <End Role="Type_Treatment" Type="Self.Type_Treatment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Future_Appointment" Type="Self.Future_Appointment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Treatment">
+        <PropertyRef Name="Type_treatment_Number" />
+      </Principal>
+      <Dependent Role="Future_Appointment">
+        <PropertyRef Name="Future_appointment_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review_Bu__Profe__4222D4EF">
+    <End Role="Professional" Type="Self.Professional" Multiplicity="0..1" />
+    <End Role="Review_Business" Type="Self.Review_Business" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professional">
+        <PropertyRef Name="ID_number" />
+      </Principal>
+      <Dependent Role="Review_Business">
+        <PropertyRef Name="Professional_ID_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Treatment__Type___440B1D61">
+    <End Role="Type_Treatment" Type="Self.Type_Treatment" Multiplicity="1" />
+    <End Role="Treatment_for_appointment" Type="Self.Treatment_for_appointment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Treatment">
+        <PropertyRef Name="Type_treatment_Number" />
+      </Principal>
+      <Dependent Role="Treatment_for_appointment">
+        <PropertyRef Name="Type_treatment_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Appointment_can_give_treatment">
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <End Role="Type_Treatment" Type="Self.Type_Treatment" Multiplicity="*" />
+  </Association>
+  <Association Name="Treatment_of_category">
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <End Role="Type_Treatment" Type="Self.Type_Treatment" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BeautyMeDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" />
+    <EntitySet Name="Business" EntityType="Self.Business" />
+    <EntitySet Name="Business_can_give_treatment" EntityType="Self.Business_can_give_treatment" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Future_Appointment" EntityType="Self.Future_Appointment" />
+    <EntitySet Name="Professional" EntityType="Self.Professional" />
+    <EntitySet Name="Review_Business" EntityType="Self.Review_Business" />
+    <EntitySet Name="Treatment_for_appointment" EntityType="Self.Treatment_for_appointment" />
+    <EntitySet Name="Type_Treatment" EntityType="Self.Type_Treatment" />
+    <AssociationSet Name="FK__Appointme__Numbe__38996AB5" Association="Self.FK__Appointme__Numbe__38996AB5">
+      <End Role="Business" EntitySet="Business" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Future_Ap__Futur__4F7CD00D" Association="Self.FK__Future_Ap__Futur__4F7CD00D">
+      <End Role="Appointment" EntitySet="Appointment" />
+      <End Role="Future_Appointment" EntitySet="Future_Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Treatment__Numbe__4316F928" Association="Self.FK__Treatment__Numbe__4316F928">
+      <End Role="Appointment" EntitySet="Appointment" />
+      <End Role="Treatment_for_appointment" EntitySet="Treatment_for_appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Business___Busin__3D5E1FD2" Association="Self.FK__Business___Busin__3D5E1FD2">
+      <End Role="Business" EntitySet="Business" />
+      <End Role="Business_can_give_treatment" EntitySet="Business_can_give_treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Business__Busine__3B75D760" Association="Self.FK__Business__Busine__3B75D760">
+      <End Role="Professional" EntitySet="Professional" />
+      <End Role="Business" EntitySet="Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Business__Profes__3C69FB99" Association="Self.FK__Business__Profes__3C69FB99">
+      <End Role="Professional" EntitySet="Professional" />
+      <End Role="Business" EntitySet="Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review_Bu__Busin__403A8C7D" Association="Self.FK__Review_Bu__Busin__403A8C7D">
+      <End Role="Business" EntitySet="Business" />
+      <End Role="Review_Business" EntitySet="Review_Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Business___Categ__3E52440B" Association="Self.FK__Business___Categ__3E52440B">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Business_can_give_treatment" EntitySet="Business_can_give_treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Business___Type___3F466844" Association="Self.FK__Business___Type___3F466844">
+      <End Role="Type_Treatment" EntitySet="Type_Treatment" />
+      <End Role="Business_can_give_treatment" EntitySet="Business_can_give_treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Future_Ap__Futur__4D94879B" Association="Self.FK__Future_Ap__Futur__4D94879B">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Future_Appointment" EntitySet="Future_Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review_Bu__Clien__412EB0B6" Association="Self.FK__Review_Bu__Clien__412EB0B6">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Review_Business" EntitySet="Review_Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Future_Ap__Futur__4E88ABD4" Association="Self.FK__Future_Ap__Futur__4E88ABD4">
+      <End Role="Type_Treatment" EntitySet="Type_Treatment" />
+      <End Role="Future_Appointment" EntitySet="Future_Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review_Bu__Profe__4222D4EF" Association="Self.FK__Review_Bu__Profe__4222D4EF">
+      <End Role="Professional" EntitySet="Professional" />
+      <End Role="Review_Business" EntitySet="Review_Business" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Treatment__Type___440B1D61" Association="Self.FK__Treatment__Type___440B1D61">
+      <End Role="Type_Treatment" EntitySet="Type_Treatment" />
+      <End Role="Treatment_for_appointment" EntitySet="Treatment_for_appointment" />
+    </AssociationSet>
+    <AssociationSet Name="Appointment_can_give_treatment" Association="Self.Appointment_can_give_treatment">
+      <End Role="Appointment" EntitySet="Appointment" />
+      <End Role="Type_Treatment" EntitySet="Type_Treatment" />
+    </AssociationSet>
+    <AssociationSet Name="Treatment_of_category" Association="Self.Treatment_of_category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Type_Treatment" EntitySet="Type_Treatment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
