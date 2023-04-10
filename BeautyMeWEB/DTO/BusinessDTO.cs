@@ -10,8 +10,10 @@ namespace BeautyMeWEB.DTO
     {
         public string Business_Number;
         public string Name;
-        public string Address;
         public string Is_client_house;
         public string Professional_ID_number;
+        public string AddressStreet;
+        public string AddressHouseNumber;
+        public string AddressCity;
     }
 }

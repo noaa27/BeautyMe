@@ -25,7 +25,9 @@ namespace BeautyMeWEB.Controllers
             {
                 Business_Number = x.Business_Number,
                 Name = x.Name,
-                Address = x.Address,
+                AddressStreet = x.AddressStreet,
+                AddressHouseNumber = x.AddressHouseNumber,
+                AddressCity = x.AddressCity,
                 Is_client_house = x.Is_client_house,
                 Professional_ID_number = x.Professional_ID_number,
             }).ToList();
@@ -38,6 +40,7 @@ namespace BeautyMeWEB.Controllers
         // Post: api/Post
         [HttpPost]
         [Route("api/Business/NewBusiness/{id_number}")]
+
         public HttpResponseMessage PostNewBusiness(string id_number, [FromBody] BusinessDTO x)
         {
             BeautyMeDBContext db = new BeautyMeDBContext();
@@ -45,7 +48,9 @@ namespace BeautyMeWEB.Controllers
             {
                 Business_Number = x.Business_Number,
                 Name = x.Name,
-                Address = x.Address,
+                AddressStreet = x.AddressStreet,
+                AddressHouseNumber = x.AddressHouseNumber,
+                AddressCity = x.AddressCity,
                 Is_client_house = x.Is_client_house,
                 Professional_ID_number = id_number
             };
@@ -58,5 +63,33 @@ namespace BeautyMeWEB.Controllers
             else
                 return Request.CreateResponse(HttpStatusCode.NoContent);
         }
+
+
+        //// Post: api/Post
+        //[HttpPost]
+        //[Route("api/Business/NewBusiness")]
+
+        //public HttpResponseMessage PostNewBusiness([FromBody] BusinessDTO x)
+        //{
+        //    BeautyMeDBContext db = new BeautyMeDBContext();
+        //    Business newBusiness = new Business()
+        //    {
+        //        Business_Number = x.Business_Number,
+        //        Name = x.Name,
+        //        AddressStreet = x.AddressStreet,
+        //        AddressHouseNumber = x.AddressHouseNumber,
+        //        AddressCity = x.AddressCity,
+        //        Is_client_house = x.Is_client_house,
+        //        Professional_ID_number = x.Professional_ID_number
+        //    };
+        //    if (newBusiness != null)
+        //    {
+        //        db.Business.Add(newBusiness);
+        //        db.SaveChanges();
+        //        return Request.CreateResponse(HttpStatusCode.OK, "new Business added to the dataBase");
+        //    }
+        //    else
+        //        return Request.CreateResponse(HttpStatusCode.NoContent);
+        //}
     }
 }

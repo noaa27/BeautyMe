@@ -18,7 +18,7 @@ namespace BeautyMe
         public Category()
         {
             this.Business_can_give_treatment = new HashSet<Business_can_give_treatment>();
-            this.Type_Treatment = new HashSet<Type_Treatment>();
+            this.Treatment_of_category = new HashSet<Treatment_of_category>();
         }
     
         public string Category_Number { get; set; }
@@ -27,6 +27,6 @@ namespace BeautyMe
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Business_can_give_treatment> Business_can_give_treatment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Type_Treatment> Type_Treatment { get; set; }
+        public virtual ICollection<Treatment_of_category> Treatment_of_category { get; set; }
     }
 }

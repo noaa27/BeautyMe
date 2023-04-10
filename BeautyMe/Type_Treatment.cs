@@ -17,21 +17,22 @@ namespace BeautyMe
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Type_Treatment()
         {
+            this.Appointment_can_give_treatment = new HashSet<Appointment_can_give_treatment>();
             this.Business_can_give_treatment = new HashSet<Business_can_give_treatment>();
-            this.Appointment = new HashSet<Appointment>();
-            this.Category = new HashSet<Category>();
+            this.Future_Appointment = new HashSet<Future_Appointment>();
+            this.Treatment_of_category = new HashSet<Treatment_of_category>();
         }
     
         public string Type_treatment_Number { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Appointment_can_give_treatment> Appointment_can_give_treatment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Business_can_give_treatment> Business_can_give_treatment { get; set; }
-        public virtual Future_Appointment Future_Appointment { get; set; }
-        public virtual Treatment_for_appointment Treatment_for_appointment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Appointment> Appointment { get; set; }
+        public virtual ICollection<Future_Appointment> Future_Appointment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category> Category { get; set; }
+        public virtual ICollection<Treatment_of_category> Treatment_of_category { get; set; }
     }
 }

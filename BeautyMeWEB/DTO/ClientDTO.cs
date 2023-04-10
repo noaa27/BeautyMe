@@ -10,8 +10,13 @@ namespace BeautyMeWEB.DTO
         public string ID_number;
         public string First_name;
         public string Last_name;
-        public string password;
+        public System.DateTime birth_date;
+        public string gender;
         public string phone;
         public string Email;
+        public string AddressStreet;
+        public string AddressHouseNumber;
+        public string AddressCity;
+        public string password;
     }
 }

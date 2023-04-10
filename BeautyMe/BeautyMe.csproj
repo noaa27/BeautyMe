@@ -53,6 +53,9 @@
     <Compile Include="Appointment.cs">
       <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Appointment_can_give_treatment.cs">
+      <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="BeautyMeEFModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,7 +94,19 @@
     <Compile Include="Review_Business.cs">
       <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Treatment_for_appointment.cs">
+    <Compile Include="Review_Client.cs">
+      <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Treatment_of_category.cs">
       <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Type_Treatment.cs">

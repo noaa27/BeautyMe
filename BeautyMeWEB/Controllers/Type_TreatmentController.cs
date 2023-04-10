@@ -21,12 +21,12 @@ namespace BeautyMeWEB.Controllers
         public HttpResponseMessage GetAllType_Treatment()
         {
             BeautyMeDBContext db = new BeautyMeDBContext();
-            List<Type_TreatmentDTO> AllCategory = db.Type_Treatment.Select(x => new Type_TreatmentDTO
+            List<Type_TreatmentDTO> AllType_Treatment = db.Type_Treatment.Select(x => new Type_TreatmentDTO
             {
                 Type_treatment_Number = x.Type_treatment_Number,
                 Name = x.Name,
             }).ToList();
-            if (AllCategory != null)
+            if (AllType_Treatment != null)
                 return Request.CreateResponse(HttpStatusCode.OK, AllType_Treatment);
             else
                 return Request.CreateResponse(HttpStatusCode.NotFound);

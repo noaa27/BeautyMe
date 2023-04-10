@@ -4,33 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a7f59599afd84c439f98aadc74e811a3" Name="Diagram1" ZoomLevel="40">
-        <EntityTypeShape EntityType="BeautyMeModel.Appointment" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Business" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Business_can_give_treatment" Width="1.5" PointX="9.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Category" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Client" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Future_Appointment" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Professional" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Review_Business" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Treatment_for_appointment" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BeautyMeModel.Type_Treatment" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
-        <AssociationConnector Association="BeautyMeModel.FK__Appointme__Numbe__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Futur__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Treatment__Numbe__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Business___Busin__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Business__Busine__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Business__Profes__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Busin__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Business___Categ__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Business___Type___3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Futur__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Clien__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Futur__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Profe__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.FK__Treatment__Type___440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.Appointment_can_give_treatment" ManuallyRouted="false" />
-        <AssociationConnector Association="BeautyMeModel.Treatment_of_category" ManuallyRouted="false" />
+      <Diagram DiagramId="a7f59599afd84c439f98aadc74e811a3" Name="Diagram1" ZoomLevel="13">
+        <EntityTypeShape EntityType="BeautyMeModel.Appointment" Width="1.5" PointX="5.25" PointY="19.875" />
+        <EntityTypeShape EntityType="BeautyMeModel.Appointment_can_give_treatment" Width="1.5" PointX="7.5" PointY="20.375" />
+        <EntityTypeShape EntityType="BeautyMeModel.Business" Width="1.5" PointX="3" PointY="12.125" />
+        <EntityTypeShape EntityType="BeautyMeModel.Business_can_give_treatment" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="BeautyMeModel.Category" Width="1.5" PointX="3" PointY="19.5" />
+        <EntityTypeShape EntityType="BeautyMeModel.Client" Width="1.5" PointX="0.75" PointY="3.25" />
+        <EntityTypeShape EntityType="BeautyMeModel.Future_Appointment" Width="1.5" PointX="10.5" PointY="19.625" />
+        <EntityTypeShape EntityType="BeautyMeModel.Professional" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="BeautyMeModel.Review_Business" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="BeautyMeModel.Review_Client" Width="1.5" PointX="3" PointY="7.75" />
+        <EntityTypeShape EntityType="BeautyMeModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BeautyMeModel.Treatment_of_category" Width="1.5" PointX="5.25" PointY="17" />
+        <EntityTypeShape EntityType="BeautyMeModel.Type_Treatment" Width="1.5" PointX="3" PointY="16.625" />
+        <AssociationConnector Association="BeautyMeModel.FK__Appointme__Busin__2EDAF651" />
+        <AssociationConnector Association="BeautyMeModel.FK__Appointme__Numbe__2DE6D218" />
+        <AssociationConnector Association="BeautyMeModel.FK__Appointme__Numbe__65370702" />
+        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Numbe__3A4CA8FD" />
+        <AssociationConnector Association="BeautyMeModel.FK__Appointme__Type___6442E2C9" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business___Busin__4C6B5938" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business__Profes__2A164134" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business__Profes__2B0A656D" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Busin__40058253" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business___Categ__4B7734FF" />
+        <AssociationConnector Association="BeautyMeModel.FK__Business___Type___4A8310C6" />
+        <AssociationConnector Association="BeautyMeModel.FK__Treatment__Categ__690797E6" />
+        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Clien__3864608B" />
+        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Clien__3B40CD36" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Clien__3F115E1A" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Cl__Clien__59C55456" />
+        <AssociationConnector Association="BeautyMeModel.FK__Future_Ap__Type___395884C4" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Bu__Profe__3E1D39E1" />
+        <AssociationConnector Association="BeautyMeModel.FK__Review_Cl__Profe__58D1301D" />
+        <AssociationConnector Association="BeautyMeModel.FK__Treatment__Type___681373AD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
