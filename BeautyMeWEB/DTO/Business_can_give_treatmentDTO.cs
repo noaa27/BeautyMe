@@ -7,9 +7,9 @@ namespace BeautyMeWEB.DTO
 {
     public class Business_can_give_treatmentDTO
     {
-        public string Type_treatment_Number;
-        public string Category_Number;
-        public string Business_Number;
+        public int Type_treatment_Number;
+        public int Category_Number;
+        public int Business_Number;
         public decimal Price;
         public System.TimeSpan Treatment_duration;
     }

@@ -40,6 +40,31 @@ namespace BeautyMeWEB.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
+        // GET: api/Professional/OneProfessional
+        [HttpGet]
+        [Route("api/Professional/OneProfessional")]
+        public HttpResponseMessage GetOneProfessional([FromBody] SearchPeopleDTO v)
+        {
+            BeautyMeDBContext db = new BeautyMeDBContext();
+            ProfessionalDTO oneProfessional = db.Professional.Where(a => a.ID_number == v.id_number && a.password == v.password).Select(x => new ProfessionalDTO
+            {
+                ID_number = x.ID_number,
+                First_name = x.First_name,
+                Last_name = x.Last_name,
+                birth_date = x.birth_date,
+                phone = x.phone,
+                Email = x.Email,
+                AddressStreet = x.AddressStreet,
+                AddressHouseNumber = x.AddressHouseNumber,
+                AddressCity = x.AddressCity,
+                password = x.password
+            }).FirstOrDefault();
+            if (oneProfessional != null)
+                return Request.CreateResponse(HttpStatusCode.OK, oneProfessional);
+            else
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+        }
+
 
         // Post: api/Post
         [HttpPost]

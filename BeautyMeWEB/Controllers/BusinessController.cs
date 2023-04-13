@@ -39,20 +39,20 @@ namespace BeautyMeWEB.Controllers
 
         // Post: api/Post
         [HttpPost]
-        [Route("api/Business/NewBusiness/{id_number}")]
+        [Route("api/Business/NewBusiness")]
 
-        public HttpResponseMessage PostNewBusiness(string id_number, [FromBody] BusinessDTO x)
+        public HttpResponseMessage PostNewBusiness([FromBody] BusinessDTO x)
         {
             BeautyMeDBContext db = new BeautyMeDBContext();
             Business newBusiness = new Business()
             {
-                Business_Number = x.Business_Number,
+                //Business_Number = x.Business_Number,
                 Name = x.Name,
                 AddressStreet = x.AddressStreet,
                 AddressHouseNumber = x.AddressHouseNumber,
                 AddressCity = x.AddressCity,
                 Is_client_house = x.Is_client_house,
-                Professional_ID_number = id_number
+                Professional_ID_number = x.Professional_ID_number
             };
             if (newBusiness != null)
             {

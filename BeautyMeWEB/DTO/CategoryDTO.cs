@@ -7,7 +7,7 @@ namespace BeautyMeWEB.DTO
 {
     public class CategoryDTO
     {
-        public string Category_Number;
+        public int Category_Number;
         public string Name;
     }
 }

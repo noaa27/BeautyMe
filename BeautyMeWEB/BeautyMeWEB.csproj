@@ -181,6 +181,7 @@
     <Compile Include="DTO\SearchDTO.cs" />
     <Compile Include="DTO\ProfessionalDTO.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
+    <Compile Include="DTO\SearchPeopleDTO.cs" />
     <Compile Include="DTO\Type_TreatmentDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

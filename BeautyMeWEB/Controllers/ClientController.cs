@@ -42,11 +42,11 @@ namespace BeautyMeWEB.Controllers
 
         // GET: api/Client/OneClient/id
         [HttpGet]
-        [Route("api/Client/OneClient/{id_number}")]
-        public HttpResponseMessage GetOneClient(string id_number, string pass)
+        [Route("api/Client/OneClient")]
+        public HttpResponseMessage GetOneClient([FromBody]SearchPeopleDTO v)
         {
             BeautyMeDBContext db = new BeautyMeDBContext();
-            ClientDTO oneClient = db.Client.Where(a => a.ID_number == id_number && a.password == pass).Select(x => new ClientDTO
+            ClientDTO oneClient = db.Client.Where(a => a.ID_number == v.id_number && a.password == v.password).Select(x => new ClientDTO
             {
                 ID_number = x.ID_number,
                 First_name = x.First_name,

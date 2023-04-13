@@ -14,7 +14,7 @@ namespace BeautyMe
     
     public partial class Review_Business
     {
-        public string Review_Number { get; set; }
+        public int Review_Number { get; set; }
         public string Cleanliness { get; set; }
         public string Professionalism { get; set; }
         public string On_time { get; set; }
@@ -22,7 +22,7 @@ namespace BeautyMe
         public string Comment { get; set; }
         public string Professional_ID_number { get; set; }
         public string Client_ID_number { get; set; }
-        public string Business_Number { get; set; }
+        public int Business_Number { get; set; }
     
         public virtual Business Business { get; set; }
         public virtual Client Client { get; set; }

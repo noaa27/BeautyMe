@@ -23,7 +23,7 @@ namespace BeautyMe
             this.Treatment_of_category = new HashSet<Treatment_of_category>();
         }
     
-        public string Type_treatment_Number { get; set; }
+        public int Type_treatment_Number { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

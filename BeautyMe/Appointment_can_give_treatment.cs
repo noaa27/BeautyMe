@@ -15,10 +15,11 @@ namespace BeautyMe
     public partial class Appointment_can_give_treatment
     {
         public int number { get; set; }
-        public string Type_treatment_Number { get; set; }
-        public string Number_appointment { get; set; }
+        public int Type_treatment_Number { get; set; }
+        public int Number_appointment { get; set; }
     
         public virtual Appointment Appointment { get; set; }
+        public virtual Appointment Appointment1 { get; set; }
         public virtual Type_Treatment Type_Treatment { get; set; }
     }
 }

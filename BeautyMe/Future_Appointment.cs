@@ -14,14 +14,14 @@ namespace BeautyMe
     
     public partial class Future_Appointment
     {
-        public string Future_appointment_number { get; set; }
+        public int Future_appointment_number { get; set; }
         public string AddressStreet { get; set; }
         public string AddressHouseNumber { get; set; }
         public string AddressCity { get; set; }
         public string Appointment_status { get; set; }
         public string Client_ID_number { get; set; }
-        public string Type_treatment_Number { get; set; }
-        public string Number_appointment { get; set; }
+        public int Type_treatment_Number { get; set; }
+        public int Number_appointment { get; set; }
     
         public virtual Appointment Appointment { get; set; }
         public virtual Client Client { get; set; }

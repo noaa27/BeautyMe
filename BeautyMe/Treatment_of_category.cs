@@ -15,8 +15,8 @@ namespace BeautyMe
     public partial class Treatment_of_category
     {
         public int number { get; set; }
-        public string Type_treatment_Number { get; set; }
-        public string Category_Number { get; set; }
+        public int Type_treatment_Number { get; set; }
+        public int Category_Number { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Type_Treatment Type_Treatment { get; set; }

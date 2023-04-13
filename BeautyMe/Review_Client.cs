@@ -14,7 +14,7 @@ namespace BeautyMe
     
     public partial class Review_Client
     {
-        public string Review_Number { get; set; }
+        public int Review_Number { get; set; }
         public System.DateTime Review_Date { get; set; }
         public string Is_come { get; set; }
         public string Canceled_on_time { get; set; }

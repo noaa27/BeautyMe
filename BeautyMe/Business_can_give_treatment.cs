@@ -14,9 +14,9 @@ namespace BeautyMe
     
     public partial class Business_can_give_treatment
     {
-        public string Type_treatment_Number { get; set; }
-        public string Category_Number { get; set; }
-        public string Business_Number { get; set; }
+        public int Type_treatment_Number { get; set; }
+        public int Category_Number { get; set; }
+        public int Business_Number { get; set; }
         public decimal Price { get; set; }
         public System.TimeSpan Treatment_duration { get; set; }
     
