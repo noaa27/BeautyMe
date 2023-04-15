@@ -2,6 +2,7 @@
 using BeautyMeWEB.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -43,53 +44,84 @@ namespace BeautyMeWEB.Controllers
 
         public HttpResponseMessage PostNewBusiness([FromBody] BusinessDTO x)
         {
-            BeautyMeDBContext db = new BeautyMeDBContext();
-            Business newBusiness = new Business()
+            try
             {
-                //Business_Number = x.Business_Number,
-                Name = x.Name,
-                AddressStreet = x.AddressStreet,
-                AddressHouseNumber = x.AddressHouseNumber,
-                AddressCity = x.AddressCity,
-                Is_client_house = x.Is_client_house,
-                Professional_ID_number = x.Professional_ID_number
-            };
-            if (newBusiness != null)
-            {
+                BeautyMeDBContext db = new BeautyMeDBContext();
+                Business newBusiness = new Business()
+                {
+                    //Business_Number = x.Business_Number,
+                    Name = x.Name,
+                    AddressStreet = x.AddressStreet,
+                    AddressHouseNumber = x.AddressHouseNumber,
+                    AddressCity = x.AddressCity,
+                    Is_client_house = x.Is_client_house,
+                    Professional_ID_number = x.Professional_ID_number
+                };
                 db.Business.Add(newBusiness);
                 db.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "new Business added to the dataBase");
             }
-            else
-                return Request.CreateResponse(HttpStatusCode.NoContent);
+            catch (DbUpdateException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occurred while adding new bussines to the database: " + ex.InnerException.InnerException.Message);
+            }
         }
-
-
-        //// Post: api/Post
-        //[HttpPost]
-        //[Route("api/Business/NewBusiness")]
-
-        //public HttpResponseMessage PostNewBusiness([FromBody] BusinessDTO x)
-        //{
-        //    BeautyMeDBContext db = new BeautyMeDBContext();
-        //    Business newBusiness = new Business()
-        //    {
-        //        Business_Number = x.Business_Number,
-        //        Name = x.Name,
-        //        AddressStreet = x.AddressStreet,
-        //        AddressHouseNumber = x.AddressHouseNumber,
-        //        AddressCity = x.AddressCity,
-        //        Is_client_house = x.Is_client_house,
-        //        Professional_ID_number = x.Professional_ID_number
-        //    };
-        //    if (newBusiness != null)
-        //    {
-        //        db.Business.Add(newBusiness);
-        //        db.SaveChanges();
-        //        return Request.CreateResponse(HttpStatusCode.OK, "new Business added to the dataBase");
-        //    }
-        //    else
-        //        return Request.CreateResponse(HttpStatusCode.NoContent);
-        //}
     }
 }
+
+
+//// Post: api/Post
+//[HttpPost]
+//[Route("api/Business/NewBusiness")]
+
+//public HttpResponseMessage PostNewBusiness([FromBody] BusinessDTO x)
+//{
+//    BeautyMeDBContext db = new BeautyMeDBContext();
+//    Business newBusiness = new Business()
+//    {
+//        //Business_Number = x.Business_Number,
+//        Name = x.Name,
+//        AddressStreet = x.AddressStreet,
+//        AddressHouseNumber = x.AddressHouseNumber,
+//        AddressCity = x.AddressCity,
+//        Is_client_house = x.Is_client_house,
+//        Professional_ID_number = x.Professional_ID_number
+//    };
+//    if (newBusiness != null)
+//    {
+//        db.Business.Add(newBusiness);
+//        db.SaveChanges();
+//        return Request.CreateResponse(HttpStatusCode.OK, "new Business added to the dataBase");
+//    }
+//    else
+//        return Request.CreateResponse(HttpStatusCode.NoContent);
+//}
+
+
+
+//// Post: api/Post
+//[HttpPost]
+//[Route("api/Business/NewBusiness")]
+
+//public HttpResponseMessage PostNewBusiness([FromBody] BusinessDTO x)
+//{
+//    BeautyMeDBContext db = new BeautyMeDBContext();
+//    Business newBusiness = new Business()
+//    {
+//        Business_Number = x.Business_Number,
+//        Name = x.Name,
+//        AddressStreet = x.AddressStreet,
+//        AddressHouseNumber = x.AddressHouseNumber,
+//        AddressCity = x.AddressCity,
+//        Is_client_house = x.Is_client_house,
+//        Professional_ID_number = x.Professional_ID_number
+//    };
+//    if (newBusiness != null)
+//    {
+//        db.Business.Add(newBusiness);
+//        db.SaveChanges();
+//        return Request.CreateResponse(HttpStatusCode.OK, "new Business added to the dataBase");
+//    }
+//    else
+//        return Request.CreateResponse(HttpStatusCode.NoContent);
+//}

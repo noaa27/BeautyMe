@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\Appointment_can_give_treatmentController.cs" />
     <Compile Include="Controllers\BusinessController.cs" />
     <Compile Include="Controllers\Business_can_give_treatmentController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Controllers\Type_TreatmentController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DTO\AppointmentDTO.cs" />
+    <Compile Include="DTO\Appointment_can_give_treatmentDTO.cs" />
     <Compile Include="DTO\BusinessDTO.cs" />
     <Compile Include="DTO\Business_can_give_treatmentDTO.cs" />
     <Compile Include="DTO\CategoryDTO.cs" />
@@ -243,6 +245,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Appointment\" />
+    <Folder Include="Views\Appointment_can_give_treatment\" />
     <Folder Include="Views\Business\" />
     <Folder Include="Views\Business_can_give_treatment\" />
     <Folder Include="Views\Category\" />

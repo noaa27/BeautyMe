@@ -2,6 +2,7 @@
 using BeautyMeWEB.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -27,6 +28,7 @@ namespace BeautyMeWEB.Controllers
                 First_name = x.First_name,
                 Last_name = x.Last_name,
                 birth_date = x.birth_date,
+                gender = x.gender,
                 phone = x.phone,
                 Email = x.Email,
                 AddressStreet = x.AddressStreet,
@@ -52,6 +54,7 @@ namespace BeautyMeWEB.Controllers
                 First_name = x.First_name,
                 Last_name = x.Last_name,
                 birth_date = x.birth_date,
+                gender = x.gender,
                 phone = x.phone,
                 Email = x.Email,
                 AddressStreet = x.AddressStreet,
@@ -65,23 +68,56 @@ namespace BeautyMeWEB.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
-
         // Post: api/Post
         [HttpPost]
         [Route("api/Professional/NewProfessional")]
-        public HttpResponseMessage PostNewProfessional([FromBody] Professional value)
+        public HttpResponseMessage PostNewProfessional([FromBody] ProfessionalDTO x)
         {
-            BeautyMeDBContext db = new BeautyMeDBContext();
-            Professional newProfessional = new Professional();
-            newProfessional = value;
-            if (newProfessional != null)
+            try
             {
+                BeautyMeDBContext db = new BeautyMeDBContext();
+                Professional newProfessional = new Professional()
+                {
+                    ID_number = x.ID_number,
+                    First_name = x.First_name,
+                    Last_name = x.Last_name,
+                    birth_date = x.birth_date,
+                    gender = x.gender,
+                    phone = x.phone,
+                    Email = x.Email,
+                    AddressStreet = x.AddressStreet,
+                    AddressHouseNumber = x.AddressHouseNumber,
+                    AddressCity = x.AddressCity,
+                    password = x.password
+                };
                 db.Professional.Add(newProfessional);
                 db.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "new Professional added to the dataBase");
             }
-            else
-                return Request.CreateResponse(HttpStatusCode.NoContent);
+            catch (DbUpdateException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occurred while adding new Professional to the database: " + ex.InnerException.InnerException.Message);
+            }
         }
     }
 }
+
+
+
+//// Post: api/Post
+//[HttpPost]
+//[Route("api/Professional/NewProfessional")]
+//public HttpResponseMessage PostNewProfessional([FromBody] Professional value)
+//{
+//    BeautyMeDBContext db = new BeautyMeDBContext();
+//    Professional newProfessional = new Professional();
+//    newProfessional = value;
+//    if (newProfessional != null)
+//    {
+//        db.Professional.Add(newProfessional);
+//        db.SaveChanges();
+//        return Request.CreateResponse(HttpStatusCode.OK, "new Professional added to the dataBase");
+//    }
+//    else
+//        return Request.CreateResponse(HttpStatusCode.NoContent);
+//}

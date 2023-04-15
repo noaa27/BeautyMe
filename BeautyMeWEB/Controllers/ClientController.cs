@@ -2,6 +2,7 @@
 using BeautyMeWEB.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -40,7 +41,7 @@ namespace BeautyMeWEB.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
-        // GET: api/Client/OneClient/id
+        // GET: api/Client/OneClient
         [HttpGet]
         [Route("api/Client/OneClient")]
         public HttpResponseMessage GetOneClient([FromBody]SearchPeopleDTO v)
@@ -52,6 +53,7 @@ namespace BeautyMeWEB.Controllers
                 First_name = x.First_name,
                 Last_name = x.Last_name,
                 birth_date = x.birth_date,
+                gender = x.gender,
                 phone = x.phone,
                 Email = x.Email,
                 AddressStreet = x.AddressStreet,
@@ -65,26 +67,60 @@ namespace BeautyMeWEB.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
+
+
         // Post: api/Post
         [HttpPost]
         [Route("api/Client/NewClient")]
-        public HttpResponseMessage PostNewClient([FromBody] Client value)
+        public HttpResponseMessage PostNewClient([FromBody] ClientDTO x)
         {
-            BeautyMeDBContext db = new BeautyMeDBContext();
-            Client newClient = new Client();
-            newClient = value;
-            if (newClient != null)
+            try
             {
+                BeautyMeDBContext db = new BeautyMeDBContext();
+                Client newClient = new Client()
+                {
+                    ID_number = x.ID_number,
+                    First_name = x.First_name,
+                    Last_name = x.Last_name,
+                    birth_date = x.birth_date,
+                    phone = x.phone,
+                    gender = x.gender,
+                    Email = x.Email,
+                    AddressStreet = x.AddressStreet,
+                    AddressHouseNumber = x.AddressHouseNumber,
+                    AddressCity = x.AddressCity,
+                    password = x.password
+                };
                 db.Client.Add(newClient);
                 db.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "new Client added to the dataBase");
+                return Request.CreateResponse(HttpStatusCode.OK, "New client added to the database");
             }
-            else
-                return Request.CreateResponse(HttpStatusCode.NoContent);
-        }  
+            catch (DbUpdateException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occurred while adding new client to the database: " + ex.InnerException.InnerException.Message);
+            }
+        }
     }
 }
 
+
+//// Post: api/Post
+//[HttpPost]
+//[Route("api/Client/NewClient")]
+//public HttpResponseMessage PostNewClient([FromBody] Client value)
+//{
+//    BeautyMeDBContext db = new BeautyMeDBContext();
+//    Client newClient = new Client();
+//    newClient = value;
+//    if (newClient != null)
+//    {
+//        db.Client.Add(newClient);
+//        db.SaveChanges();
+//        return Request.CreateResponse(HttpStatusCode.OK, "new Client added to the dataBase");
+//    }
+//    else
+//        return Request.CreateResponse(HttpStatusCode.NoContent);
+//}
 
 
 

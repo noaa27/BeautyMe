@@ -84,6 +84,7 @@
     <Compile Include="Client.cs">
       <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="extensions\Client.cs" />
     <Compile Include="Future_Appointment.cs">
       <DependentUpon>BeautyMeEFModel.tt</DependentUpon>
     </Compile>

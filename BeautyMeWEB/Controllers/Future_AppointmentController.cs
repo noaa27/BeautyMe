@@ -2,6 +2,7 @@
 using BeautyMeWEB.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -48,26 +49,28 @@ namespace BeautyMeWEB.Controllers
         [Route("api/Future_Appointment/NewFuture_Appointment")]
         public HttpResponseMessage PostNewFuture_Appointment([FromBody] Future_AppointmentDTO x)
         {
-            BeautyMeDBContext db = new BeautyMeDBContext();
-            Future_Appointment newFuture_Appointment = new Future_Appointment()
+            try
             {
-                //Future_appointment_number = x.Future_appointment_number,
-                AddressStreet = x.AddressStreet,
-                AddressHouseNumber = x.AddressHouseNumber,
-                AddressCity = x.AddressCity,
-                Appointment_status = x.Appointment_status,
-                Client_ID_number = x.Client_ID_number,
-                Type_treatment_Number = x.Type_treatment_Number,
-                Number_appointment = x.Number_appointment
-            };
-            if (newFuture_Appointment != null)
-            {
+                BeautyMeDBContext db = new BeautyMeDBContext();
+                Future_Appointment newFuture_Appointment = new Future_Appointment()
+                {
+                    //Future_appointment_number = x.Future_appointment_number,
+                    AddressStreet = x.AddressStreet,
+                    AddressHouseNumber = x.AddressHouseNumber,
+                    AddressCity = x.AddressCity,
+                    Appointment_status = x.Appointment_status,
+                    Client_ID_number = x.Client_ID_number,
+                    Type_treatment_Number = x.Type_treatment_Number,
+                    Number_appointment = x.Number_appointment
+                };
                 db.Future_Appointment.Add(newFuture_Appointment);
                 db.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "new Future_Appointment added to the dataBase");
             }
-            else
-                return Request.CreateResponse(HttpStatusCode.NoContent);
+            catch (DbUpdateException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occurred while adding new Future_Appointment to the database: " + ex.InnerException.InnerException.Message);
+            }
         }
 
 
@@ -93,7 +96,6 @@ namespace BeautyMeWEB.Controllers
                 Future_AppointmentToUpdate.Client_ID_number = x.Client_ID_number;
                 Future_AppointmentToUpdate.Type_treatment_Number = x.Type_treatment_Number;
                 Future_AppointmentToUpdate.Number_appointment = x.Number_appointment;
-                db.Future_Appointment.Add(Future_AppointmentToUpdate);
                 db.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK, "The Appointment update in the dataBase");
             }

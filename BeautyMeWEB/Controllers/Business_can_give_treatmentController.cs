@@ -2,6 +2,7 @@
 using BeautyMeWEB.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -40,23 +41,25 @@ namespace BeautyMeWEB.Controllers
         [Route("api/Business_can_give_treatment/PostNewTreatmentOfBussines")]
         public HttpResponseMessage PostNewTreatmentOfBussines([FromBody] Business_can_give_treatmentDTO x)
         {
-            BeautyMeDBContext db = new BeautyMeDBContext();
-            Business_can_give_treatment newBusiness = new Business_can_give_treatment()
+            try
             {
-                Type_treatment_Number = x.Type_treatment_Number,
-                Category_Number = x.Category_Number,
-                Business_Number = x.Business_Number,
-                Price = x.Price,
-                Treatment_duration = x.Treatment_duration,
-            };
-            if (newBusiness != null)
-            {
+                BeautyMeDBContext db = new BeautyMeDBContext();
+                Business_can_give_treatment newBusiness = new Business_can_give_treatment()
+                {
+                    Type_treatment_Number = x.Type_treatment_Number,
+                    Category_Number = x.Category_Number,
+                    Business_Number = x.Business_Number,
+                    Price = x.Price,
+                    Treatment_duration = x.Treatment_duration,
+                };
                 db.Business_can_give_treatment.Add(newBusiness);
                 db.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, "new Business added to the dataBase");
+                return Request.CreateResponse(HttpStatusCode.OK, "new treatment of Business added to the dataBase");
             }
-            else
-                return Request.CreateResponse(HttpStatusCode.NoContent);
+            catch (DbUpdateException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occurred while adding new treatment of Business to the database: " + ex.InnerException.InnerException.Message);
+            }
         }
     }
 }
